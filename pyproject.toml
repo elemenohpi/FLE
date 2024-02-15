@@ -43,7 +43,7 @@ attrs = "^21.2.0"
 anyio = "^3.6.1"
 cattrs = "^22.1.0"
 numpy = "^1.22.4"
-gym = "^0.24.1"
+gym = "^0.26.2"
 betterproto = {git = "https://github.com/efokschaner/python-betterproto", rev = "72d2eb6b1ddd952d8acf943def6f6963d23e2bc3"}
 typer = "^0.4.1"
 protobuf = "^3.20.1"
