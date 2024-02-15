@@ -68,7 +68,7 @@ pytest-cov = "^3.0.0"
 tox = "^3.25.1"
 betterproto = {git = "https://github.com/efokschaner/python-betterproto", rev = "72d2eb6b1ddd952d8acf943def6f6963d23e2bc3", extras = ["compiler"]}
 grpcio-tools = "^1.47.0"
-tox-gh-actions = "^2.9.1"
+tox-gh-actions = "^2.12.0"
 Jinja2 = "^3.1.1"
 safety-db = "^2021.7.17"
 pyupgrade = "^2.34.0"
