@@ -52,7 +52,7 @@ pytest-asyncio = { version = "^0.18.3", optional = true }
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.4"
-black = {version = "^22.6", allow-prereleases = true}
+black = {version = "^24.2", allow-prereleases = true}
 darglint = "^1.8.1"
 isort = {extras = ["colors"], version = "^5.10.1"}
 mypy = "^0.961"
