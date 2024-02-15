@@ -45,7 +45,7 @@ cattrs = "^22.1.0"
 numpy = "^1.22.4"
 gym = "^0.24.1"
 betterproto = {git = "https://github.com/efokschaner/python-betterproto", rev = "72d2eb6b1ddd952d8acf943def6f6963d23e2bc3"}
-typer = "^0.4.1"
+typer = "^0.9.0"
 protobuf = "^3.20.1"
 pytest = { version = "^7.1.2", optional = true }
 pytest-asyncio = { version = "^0.18.3", optional = true }
