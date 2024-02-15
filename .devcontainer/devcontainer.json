@@ -1,0 +1,40 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.209.6/containers/python-3
+{
+  "name": "FLE Workspace",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "..",
+    "args": {}
+  },
+  // Docker cli args
+  "runArgs": [
+    "--cap-add=SYS_PTRACE" // Allows ptrace-based profiling
+  ],
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    "python.defaultInterpreterPath": "/home/vscode/.pyenv/versions/3.8.12/bin/python",
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+      "--no-color"
+    ],
+    "python.linting.enabled": true,
+    "python.linting.mypyEnabled": true,
+    "python.linting.pylintEnabled": true,
+    // Dont activateEnvironment, it restricts the shell to only one python version but we actually want multiple
+    "python.terminal.activateEnvironment": false
+  },
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "editorconfig.editorconfig",
+    "zxh404.vscode-proto3"
+  ],
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  // "forwardPorts": [],
+  // Use 'postCreateCommand' to run commands after the container is created.
+  // "postCreateCommand": "pip3 install --user -r requirements.txt",
+  // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "vscode",
+}

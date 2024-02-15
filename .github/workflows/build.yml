@@ -1,0 +1,42 @@
+name: build
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8.12", "3.10.1"]
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+      id: buildx
+
+    - name: Build devcontainer
+      uses: docker/build-push-action@v3
+      with:
+        builder: ${{ steps.buildx.outputs.name }}
+        push: false
+        load: true
+        context: .
+        file: ./.devcontainer/Dockerfile
+        tags: factorio_learning_environment:latest
+        cache-from: type=gha,scope=fle-devcontainer-${{ matrix.python-version }}
+        cache-to: type=gha,mode=max,scope=fle-devcontainer-${{ matrix.python-version }}
+        build-args: |
+          PYTHON_VERSIONS=${{ matrix.python-version }}
+
+    - name: Make repo writable by vscode user
+      run: chmod -R a+w .
+
+    - name: Make CI
+      # It may seem weird to pass the -i flag to bash in CI, but it ensures the bash environment
+      # behaves identically to interactive local usage.
+      run: |
+        docker run -v "$(pwd):/workspaces/factorio-learning-environment" \
+        -w /workspaces/factorio-learning-environment factorio_learning_environment \
+        /bin/bash -ic "make ci"

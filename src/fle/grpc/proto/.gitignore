@@ -1,0 +1,3 @@
+# This folder is where generated proto files go, none of which need to be commited.
+# To regenerate these files: `make proto`
+*.py

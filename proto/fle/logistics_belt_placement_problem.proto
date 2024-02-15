@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package fle;
+
+import "fle/common.proto";
+
+message CreateEvaluatorRequest {
+  enum ProblemCategory {
+    INVALID_CATEGORY = 0;
+    STATIC = 1;
+    DYNAMIC = 2;
+  }
+  enum ProblemSize {
+    INVALID_SIZE = 0;
+    SIZE_3X3 = 1;
+    SIZE_6X6 = 2;
+    SIZE_12X12 = 3;
+  }
+  ProblemCategory problem_category = 1;
+  ProblemSize problem_size = 2;
+  bool deterministic = 3;
+}
+
+message EvaluatorHandle { string uuid = 1; }
+
+message CreateWorldRequest { EvaluatorHandle evaluator = 1; }
+
+message SaveWorldRequest {
+  EvaluatorHandle evaluator = 1;
+  string save_file_path = 2;
+}
+
+message EvaluateFitnessRequest {
+  EvaluatorHandle evaluator = 1;
+  NDArray solution = 2;
+}
+message EvaluateFitnessResponse { sint32 fitness = 1; }
+
+message ServerConnectionInfo {
+  uint32 game_port = 1;
+  string game_password = 2;
+  uint32 rcon_port = 3;
+  string rcon_password = 4;
+}
+
+service LogisticsBeltPlacementProblem {
+  rpc CreateEvaluator(CreateEvaluatorRequest) returns (EvaluatorHandle);
+  rpc DestroyEvaluator(EvaluatorHandle) returns (Empty);
+  rpc CreateWorld(CreateWorldRequest) returns (NDArray);
+  rpc EvaluateFitness(EvaluateFitnessRequest) returns (EvaluateFitnessResponse);
+  rpc SaveWorld(SaveWorldRequest) returns (Empty);
+  rpc GetConnectionInfo(EvaluatorHandle) returns (ServerConnectionInfo);
+}

@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package fle;
+
+message Empty {}
+
+message NDArray {
+  repeated uint32 shape = 1;
+  // Data is expected to be row major (lexicographic)
+  repeated sint32 data = 2;
+}
