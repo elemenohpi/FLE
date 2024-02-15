@@ -64,7 +64,7 @@ safety = "^1.10.3"
 coverage = {extras = ["toml"], version = "^6.4"}
 coverage-badge = "^1.1.0"
 pytest-html = "^3.1.1"
-pytest-cov = "^3.0.0"
+pytest-cov = "^4.1.0"
 tox = "^3.25.1"
 betterproto = {git = "https://github.com/efokschaner/python-betterproto", rev = "72d2eb6b1ddd952d8acf943def6f6963d23e2bc3", extras = ["compiler"]}
 grpcio-tools = "^1.47.0"
